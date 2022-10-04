@@ -1,0 +1,59 @@
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 1360px;
+    margin: 0 auto 28px;
+    height: 40px;
+}
+
+.header__left {
+    display: flex;
+    align-items: center;
+}
+
+.header__logo {
+    width: 89px;
+    height: 40px;
+    margin-right: 24px;
+}
+
+.header__date {
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.header__right {
+    display: flex;
+    align-items: center;
+}
+.header__button {
+    height: 24px;
+    width: 116px;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 24px;
+    border: none;
+    white-space: nowrap;
+    margin-right: 20px;
+    padding: 0;
+}
+
+.header__button:hover {
+    cursor: pointer;
+}
+
+.header__profile-name {
+    line-height: 24px;
+    font-size: 20px;
+    font-weight: 700;
+    margin-right: 12px;
+}
+
+.header__profile-avatar {
+    height: 40px;
+    width: 40px;
+    box-sizing: border-box;
+}

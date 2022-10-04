@@ -1,0 +1,18 @@
+.footer {
+    display: flex;
+    justify-content: space-between;
+    width: 1360px;
+    margin: auto;
+}
+
+.footer__name {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+}
+
+.footer__year {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+}

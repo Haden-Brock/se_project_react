@@ -1,0 +1,104 @@
+.modal {
+    background-color: rgba(0,0,0,0.3);
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+
+.modal_hidden {
+    display: hidden;
+}
+
+.modal__container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    max-width: 498px;
+    border-radius: 16px;
+    overflow: hidden;
+    background-color: #fff;
+}
+
+.modal__image {
+    width: 498px;
+    height: 498px;
+    margin-bottom: 20px;
+}
+
+.modal__exit {
+    background-image: url('../images/exit_button.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    top: 27px;
+    right: 27px;
+    border: none;
+    background-color: rgba(0,0,0,0);
+    padding: 0;
+}
+
+.modal__exit:hover {
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+.modal__name {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 24px;
+    margin-bottom: 12px;
+    margin-left: 32px;
+    margin-top: 0;
+}
+
+.modal__weather {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 24px;
+    margin-bottom: 32px;
+    margin-left: 32px;
+    margin-top: 0;
+}
+
+.modal__form-container {
+    width: 498px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background-color: #fff;
+    border-radius: 20px;
+    border: 1px solid rgba(0,0,0,0.3);
+    padding: 28px 28px 36px;
+    box-sizing: border-box;
+}
+
+.modal__form-exit {
+    background-image: url('../images/exit_button_grey.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: rgba(0, 0, 0, 0);
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    top: 22px;
+    right: 30px;
+    border: none;
+}
+
+.modal__form-title {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 20px;
+    margin-bottom: 24px;
+}
+
