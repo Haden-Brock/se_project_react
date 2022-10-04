@@ -39,12 +39,6 @@ function App() {
     setActiveModal("");
   }
 
-  const handleEsc = (evt) => {
-    if(evt.key === 'Escape'){
-      closeModal();
-    }
-  }
-
   React.useEffect(() => {
     const handleEsc = (evt) => {
       if(evt.key === 'Escape'){
