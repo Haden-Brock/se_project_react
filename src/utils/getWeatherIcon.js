@@ -1,5 +1,5 @@
 function getWeatherIcon(weatherData) {
-    let iconArray = [];
+    const iconArray = [];
     if(weatherData.weatherName === 'cloudy') {
         iconArray.push("sunny");
         iconArray.push("cloudy");
@@ -7,7 +7,7 @@ function getWeatherIcon(weatherData) {
         iconArray.push(weatherData.weatherName);
     }
 
-    let daytimeArray = iconArray.map((string) => {
+    const daytimeArray = iconArray.map((string) => {
         if(weatherData.isDay) {
             return string + "_day";
         } else {

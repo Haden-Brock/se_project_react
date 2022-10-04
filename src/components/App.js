@@ -36,7 +36,7 @@ function App() {
   }
 
   const closeModal = () => {
-    setActiveModal();
+    setActiveModal("");
   }
 
   const handleEsc = (evt) => {
@@ -46,6 +46,12 @@ function App() {
   }
 
   React.useEffect(() => {
+    const handleEsc = (evt) => {
+      if(evt.key === 'Escape'){
+        closeModal();
+      }
+    }
+    
     window.addEventListener('keydown', handleEsc);
     return () => {window.removeEventListener('keydown', handleEsc)};
   }, []);
@@ -101,7 +107,7 @@ function App() {
                 type="radio"
                 id="hot"
               />
-              <label className="form__label-radio" for="hot">
+              <label className="form__label-radio" htmlFor="hot">
               Hot
               </label>
             </div>
@@ -113,7 +119,7 @@ function App() {
                 type="radio"
                 id="warm"
               />
-              <label className="form__label-radio" for="warm">
+              <label className="form__label-radio" htmlFor="warm">
               Warm
               </label>
             </div>
@@ -125,7 +131,7 @@ function App() {
                 type="radio"
                 id="cold"
               />
-              <label className="form__label-radio" for="cold">
+              <label className="form__label-radio" htmlFor="cold">
               Cold
               </label>
             </div>
