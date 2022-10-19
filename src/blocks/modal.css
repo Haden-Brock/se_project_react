@@ -17,9 +17,15 @@
 
 .modal__container {
     position: relative;
-    display: flex;
-    flex-direction: column;
-    max-width: 498px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 498px 44px 36px;
+    grid-template-areas: 
+        "image image"
+        "name delete"
+        "weather .";
+    width: 498px;
+    height: 610px;
     border-radius: 16px;
     overflow: hidden;
     background-color: #fff;
@@ -29,6 +35,7 @@
     width: 498px;
     height: 498px;
     margin-bottom: 20px;
+    grid-area: image;
 }
 
 .modal__exit {
@@ -55,18 +62,36 @@
     font-size: 20px;
     font-weight: 700;
     line-height: 24px;
-    margin-bottom: 12px;
-    margin-left: 32px;
-    margin-top: 0;
+    margin: 0 0 0 32px;
+    grid-area: name;
+    display: flex;
+    align-items: flex-end;
 }
 
 .modal__weather {
     font-size: 20px;
     font-weight: 700;
     line-height: 24px;
-    margin-bottom: 32px;
-    margin-left: 32px;
-    margin-top: 0;
+    margin: 0 0 0 32px;
+    grid-area: weather;
+    display: flex;
+    align-items: flex-end;
+}
+
+.modal__delete {  
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    color: #FF4D00;
+    grid-area: delete;
+    line-height: 24px;
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0 32px 0 0;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    padding: 0;
 }
 
 .modal__form-container {
@@ -93,6 +118,10 @@
     top: 22px;
     right: 30px;
     border: none;
+}
+
+.modal__form-exit:hover {
+    cursor: pointer;
 }
 
 .modal__form-title {

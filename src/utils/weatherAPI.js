@@ -40,7 +40,7 @@ function getWeatherName(condition) {
 function parseDataObj(data) {
     const parsedDataObj = {
         name: data.location.name, 
-        temp: data.current.temp_f,
+        temp: {F: `${data.current.temp_f}°F`, C: `${data.current.temp_c}°C`},
         weatherName: getWeatherName(data.current.condition.text),
         type: setTemperatureDefinition(data.current.temp_f),
         isDay: !!data.current.is_day   
