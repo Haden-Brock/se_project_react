@@ -48,16 +48,12 @@ function App() {
   const handleCardDelete = (card) => {
     deleteClothingItem(card.id)
       .then(() => {
-        const newClothingCards = clothingCards.filter(item => item.id !== card.id);
-        setClothingCards(newClothingCards);
+        setClothingCards(state => state.filter(item => item.id !== card.id));
+        closeModal();
       })
       .catch((err) => {
         console.log(err);
       })
-    
-    
-    
-    closeModal();
   }
 
   const handleAddItemModal = () => {
@@ -94,9 +90,12 @@ function App() {
       }
     }
     
-    window.addEventListener('keydown', handleEsc);
+    if(activeModal){
+      window.addEventListener('keydown', handleEsc);
+    }
+
     return () => {window.removeEventListener('keydown', handleEsc)};
-  }, [activeModal]);
+  }, [activeModal]);                                       
 
   const handleToggleSwitchChange = () => {
     currentTemperatureUnit === "F" ? setCurrentTemperatureUnit("C") : setCurrentTemperatureUnit("F");
@@ -109,7 +108,7 @@ function App() {
         <Header 
           weatherData={ weatherData } 
           openModal={() => {
-            setActiveModal('add');
+            setActiveModal(MODAL_TYPE.ADD);
           }}
         />
         
