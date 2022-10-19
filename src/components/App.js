@@ -7,7 +7,7 @@ import AddItemModal from './AddItemModal';
 import ItemModal from './ItemModal';
 import Profile from './Profile';
 import { getWeatherData, parseDataObj } from '../utils/weatherAPI';
-import { apiKey, parsedLocation} from '../utils/constants';
+import { apiKey, parsedLocation, MODAL_TYPE} from '../utils/constants';
 import { getClothingData, addClothingItem, deleteClothingItem } from '../utils/api';
 import { CurrentTemperatureUnitContext } from '../contexts/CurrentTemperatureUnitContext';
 import { Route } from 'react-router-dom';
@@ -42,22 +42,26 @@ function App() {
 
   const handleCardClick = (card) => {
     setActiveCard(card);
-    setActiveModal("item");
-    console.log(card);
+    setActiveModal(MODAL_TYPE.ITEM);
   }
 
   const handleCardDelete = (card) => {
-    console.log(card);
-    deleteClothingItem(card);
-    const newClothingCards = clothingCards.filter(item => item.id !== card);
-    setClothingCards(newClothingCards);
+    deleteClothingItem(card.id)
+      .then(() => {
+        const newClothingCards = clothingCards.filter(item => item.id !== card.id);
+        setClothingCards(newClothingCards);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+    
     
     
     closeModal();
   }
 
   const handleAddItemModal = () => {
-    setActiveModal("add");
+    setActiveModal(MODAL_TYPE.ADD);
   }
 
   const handleAddItemSubmit = ({name, weather, imageUrl}) => {
@@ -68,10 +72,14 @@ function App() {
       weather: weather, 
       imageUrl: imageUrl
     };
-
-    setClothingCards([item, ...clothingCards]);
-
-    addClothingItem({ id, name, weather, imageUrl })
+    
+    addClothingItem(item)
+      .then((item) => {
+        setClothingCards([item, ...clothingCards]);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
     
   }
 
@@ -88,7 +96,7 @@ function App() {
     
     window.addEventListener('keydown', handleEsc);
     return () => {window.removeEventListener('keydown', handleEsc)};
-  }, []);
+  }, [activeModal]);
 
   const handleToggleSwitchChange = () => {
     currentTemperatureUnit === "F" ? setCurrentTemperatureUnit("C") : setCurrentTemperatureUnit("F");
@@ -123,17 +131,17 @@ function App() {
 
         <Footer />
 
-        {activeModal === "add" && (
+        {activeModal === MODAL_TYPE.ADD && (
           <AddItemModal 
-            isOpen={activeModal === "add"}
+            isOpen={activeModal === MODAL_TYPE.ADD}
             onAddItem={handleAddItemSubmit}
             onClose={closeModal}
           />
         )}
 
-        {activeModal === "item" && (
+        {activeModal === MODAL_TYPE.ITEM && (
           <ItemModal
-            isOpen={activeModal === "item"}
+            isOpen={activeModal === MODAL_TYPE.ITEM}
             card={activeCard}
             onClose={closeModal}
             handleCardDelete={handleCardDelete}
