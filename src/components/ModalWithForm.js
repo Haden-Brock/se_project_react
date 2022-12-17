@@ -1,7 +1,8 @@
 import '../blocks/modal.css';
 import '../blocks/form.css';
+import { Link } from 'react-router-dom';
 
-function ModalWithForm({isOpen, name, title, buttonText, onClose, handleSubmit, children}) {
+function ModalWithForm({isOpen, name, title, buttonText, redirect, buttonAlt, onClose, handleSubmit, handleModalChange, children}) {
     return (
         <div className={isOpen ? `modal modal_type_${name}` : `modal modal_type_${name} modal_hidden`}>
             <div className="modal__form-container">
@@ -9,7 +10,12 @@ function ModalWithForm({isOpen, name, title, buttonText, onClose, handleSubmit, 
                 <h3 className="modal__form-title">{title}</h3>
                 <form className="form" name={name}>
                     {children}
-                    <button className="form__submit" type="submit" onClick={handleSubmit}>{buttonText}</button>
+                    <div className="form__buttons">
+                        <button className="form__submit" type="submit" onClick={handleSubmit}>{buttonText}</button>
+                        {redirect && (
+                            <Link to={redirect} className="form__redirect" onClick={handleModalChange}>{buttonAlt}</Link>
+                        )}
+                    </div>
                 </form>
             </div>
         </div>

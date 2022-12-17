@@ -10,7 +10,7 @@ import rain_night from "../images/rain_night.png";
 import storm_night from "../images/storm_night.png";
 import snow_night from "../images/snow_night.png";
 import fog_night from "../images/fog_night.png";
-const apiKey = 'd9eccb0173fe4b4598c164051221710';
+const apiKey = '259c506dbc8fdea3b9d42c71c83e0007';
 const location = {
     latitude: 30.4877266, 
     longitude: -98.0007118
@@ -34,11 +34,14 @@ const weatherConditions = {
 
 const weatherIconSelector = ['weather__icon-one', 'weather__icon-two'];
 
-const baseUrl = 'https://my-json-server.typicode.com/Haden-Brock/se_project_react';
+const baseUrl = 'http://localhost:3001';
 
 const MODAL_TYPE = {
   ADD: "add", 
-  ITEM: "item"
+  ITEM: "item",
+  LOGIN: "login", 
+  REGISTER: "register",
+  EDIT: "edit"
 };
 
 export {

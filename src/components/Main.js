@@ -14,7 +14,7 @@ function clothesFilter(card, data) {
 }
 
 
-function Main({ weatherData, clothingCards, handleCardClick }) {
+const Main = ({ weatherData, clothingCards, handleCardClick, handleLikeClick }) => {
     const clothingChoices = clothingCards.filter(item => clothesFilter(item, weatherData));
     const { currentTemperatureUnit } = React.useContext(CurrentTemperatureUnitContext);
     
@@ -27,10 +27,11 @@ function Main({ weatherData, clothingCards, handleCardClick }) {
                     (item) => (
                         <ItemCard 
                             clothingItem={item} 
-                            key={item.id} 
+                            key={item._id} 
                             name={item.name} 
                             image={item.imageUrl} 
-                            weather={item.weather} 
+                            weather={item.weather}
+                            handleLikeClick={handleLikeClick} 
                             onClick={() => {
                                 handleCardClick(item)
                             }}

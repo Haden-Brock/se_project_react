@@ -1,7 +1,7 @@
 import { scryRenderedComponentsWithType } from "react-dom/test-utils";
 
-const getWeatherData = (apiKey, parsedLocation) => {
-    return fetch(`https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${parsedLocation}&days=1`)
+const getWeatherData = (apiKey, location) => {
+    return fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${location.latitude}&lon=${location.longitude}&appid=${apiKey}&units=imperial`)
         .then(res => {
             if(res.ok) {
                 return res.json();
@@ -22,9 +22,9 @@ function setTemperatureDefinition(temp) {
 
 function getWeatherName(condition) {
     const weatherString = condition.toLowerCase();
-    if(weatherString.includes("sunny") || weatherString.includes("clear")) {
+    if(weatherString.includes("sun") || weatherString.includes("clear")) {
         return 'sunny';
-    } else if (weatherString.includes("cloudy") || weatherString.includes("overcast")) {
+    } else if (weatherString.includes("cloud") || weatherString.includes("overcast")) {
         return 'cloudy';
     } else if (weatherString.includes("fog") || weatherString.includes("mist")) {
         return 'fog';
@@ -38,12 +38,14 @@ function getWeatherName(condition) {
 }
 
 function parseDataObj(data) {
+    const temp_f = data.main.temp.toFixed(1);
+    const temp_c = ((data.main.temp - 32) * (5 / 9)).toFixed(1);
     const parsedDataObj = {
-        name: data.location.name, 
-        temp: {F: `${data.current.temp_f}°F`, C: `${data.current.temp_c}°C`},
-        weatherName: getWeatherName(data.current.condition.text),
-        type: setTemperatureDefinition(data.current.temp_f),
-        isDay: !!data.current.is_day   
+        name: data.name, 
+        temp: {F: `${temp_f}°F`, C: `${temp_c}°C`},
+        weatherName: getWeatherName(data.weather[0].main),
+        type: setTemperatureDefinition(data.main.temp),
+        isDay: (data.dt > data.sys.sunrise && data.dt < data.sys.sunset)
     };
 
     return parsedDataObj;

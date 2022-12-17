@@ -9,17 +9,20 @@
     position: relative;
 }
 
+.card__top {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    width: max-content;
+    margin: 16px auto 0;
+    border: none;
+}
+
 .card__title {
     background-color: #fff;
     height: 24px;
     border-radius: 4px;
-    margin: 16px auto 0;
-    z-index: 1;
-    position: relative;
-    display: flex;
-    align-items: center;
-    width: max-content;
-    border: none;
 }
 
 .card__title-text {
@@ -29,6 +32,24 @@
     margin: 2px 12px;
     color: rgba(0, 0, 0, 0.6);
     z-index: 1;
+}
+
+.card__like {
+    z-index: 1;
+    height: 15px;
+    width: 18px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    margin-left: 10px;
+    border: none;
+    padding: none;
+    cursor: pointer;
+}
+
+.card__like-hidden {
+    display: none;
 }
 
 .card__image {

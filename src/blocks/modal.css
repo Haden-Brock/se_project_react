@@ -1,5 +1,5 @@
 .modal {
-    background-color: rgba(0,0,0,0.3);
+    background-color: rgba(0, 0, 0, 0.3);
     width: 100vw;
     height: 100vh;
     position: fixed;
@@ -20,7 +20,7 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: 498px 44px 36px;
-    grid-template-areas: 
+    grid-template-areas:
         "image image"
         "name delete"
         "weather .";
@@ -49,7 +49,7 @@
     top: 27px;
     right: 27px;
     border: none;
-    background-color: rgba(0,0,0,0);
+    background-color: rgba(0, 0, 0, 0);
     padding: 0;
 }
 
@@ -78,7 +78,7 @@
     align-items: flex-end;
 }
 
-.modal__delete {  
+.modal__delete {
     border: none;
     background: transparent;
     cursor: pointer;
@@ -94,6 +94,14 @@
     padding: 0;
 }
 
+.modal__delete_visible {
+    display: visible;
+}
+
+.modal__delete_hidden {
+    display: none;
+}
+
 .modal__form-container {
     width: 498px;
     position: relative;
@@ -102,7 +110,7 @@
     justify-content: flex-start;
     background-color: #fff;
     border-radius: 20px;
-    border: 1px solid rgba(0,0,0,0.3);
+    border: 1px solid rgba(0, 0, 0, 0.3);
     padding: 28px 28px 36px;
     box-sizing: border-box;
 }
@@ -130,4 +138,3 @@
     line-height: 20px;
     margin-bottom: 24px;
 }
-

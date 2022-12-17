@@ -29,6 +29,7 @@
     display: flex;
     align-items: center;
 }
+
 .header__button {
     height: 24px;
     width: 116px;
@@ -56,4 +57,42 @@
     height: 40px;
     width: 40px;
     box-sizing: border-box;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.header__profile-initial {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    box-sizing: border-box;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    font-size: 20px;
+    font-weight: 700;
+    text-align: center;
+    line-height: 40px;
+}
+
+.header__profile-signup {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 24px;
+    margin-right: 20px;
+    box-sizing: border-box;
+    border-style: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.header__profile-signin {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 24px;
+    margin-right: 20px;
+    box-sizing: border-box;
+    border-style: none;
+    padding: 0;
+    cursor: pointer;
 }
