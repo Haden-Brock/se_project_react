@@ -2,13 +2,13 @@ import { baseUrl } from "./constants";
 
 const handleResponse = (res) => {
   if(res.ok) {
-      console.log(res);
       return res.json();
   }
   return Promise.reject(`Error ${res.status}`);
 };
 
 const register = ({ name, avatar, email, password }) => {
+  const user = {email: email, password: password};
   return fetch(`${baseUrl}/signup`,
     {
       method: "POST",
@@ -18,9 +18,9 @@ const register = ({ name, avatar, email, password }) => {
       },
       body: JSON.stringify({ name, avatar, email, password }),
     }
-  )
-    .then(console.log(JSON.stringify({ name, avatar, email, password})))
-    .then(handleResponse)
+  )    
+    .then(() => {return user})
+    .catch((err) => console.log(err));
 };
 
 const authorize = (user) => {
@@ -36,7 +36,6 @@ const authorize = (user) => {
   })
     .then(res => res.json())
     .then((data) => {
-      console.log("token",data);
       if (data.token) {
         localStorage.setItem('jwt', data.token); 
         

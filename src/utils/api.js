@@ -2,7 +2,6 @@ import { baseUrl } from "./constants";
 
 const handleResponse = (res) => {
     if(res.ok) {
-        console.log(res);
         return res.json();
     }
     return Promise.reject(`Error ${res.status}`);
@@ -84,6 +83,7 @@ const dislikeCard = (cardId, userId) => {
         },
         body: JSON.stringify({ userId })
     })
+    .then(handleResponse)
 }
 
 export {getClothingData, addClothingItem, deleteClothingItem, editProfile, likeCard, dislikeCard};

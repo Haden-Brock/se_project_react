@@ -9,6 +9,7 @@ import Profile from './Profile';
 import RegisterModal from './RegisterModal';
 import LoginModal from './LoginModal';
 import EditProfileModal from './EditProfileModal';
+import ProtectedRoute from './ProtectedRoute';
 import { getWeatherData, parseDataObj } from '../utils/weatherAPI';
 import { apiKey, location, MODAL_TYPE} from '../utils/constants';
 import { getClothingData, addClothingItem, deleteClothingItem, editProfile, likeCard, dislikeCard } from '../utils/api';
@@ -37,8 +38,7 @@ const App = () => {
           history.push('/profile');
         })
     } else {
-      history.push('/signin');
-      setActiveModal(MODAL_TYPE.LOGIN);
+      history.push('/');
     }
   }, []);
     
@@ -89,10 +89,12 @@ const App = () => {
 
   const handleLoginModal = () => {
     setActiveModal(MODAL_TYPE.LOGIN);
+    history.push('/signin');
   }
 
   const handleRegisterModal = () => {
     setActiveModal(MODAL_TYPE.REGISTER);
+    history.push('signup');
   }
 
   const handleLogin = (user) => {
@@ -135,7 +137,6 @@ const App = () => {
     setLoggedIn(false);
     setCurrentUser({});
     history.push('/');
-    handleLoginModal();
   }
 
   const handleRegister = ({ email, password, userName, avatar} ) => {
@@ -148,7 +149,9 @@ const App = () => {
     }
     
     auth.register(newUser)
-      .then((data) => handleLogin(data))
+      .then((user) => {
+        return handleLogin(user);
+      })
   }
 
   const handleAddItemSubmit = ({ name, weather, imageUrl }) => {
@@ -215,7 +218,7 @@ const App = () => {
             loggedIn={loggedIn}
           />
           <Switch>
-            <Route path="/profile" loggedIn={loggedIn}>
+            <ProtectedRoute path="/profile" loggedIn={loggedIn}>
               <Profile 
                 handleCardClick={handleCardClick}
                 handleAddItemModal={handleAddItemModal}
@@ -224,7 +227,7 @@ const App = () => {
                 handleLogout={handleLogout}
                 handleLikeClick={handleLikeClick}
               />
-            </Route>
+            </ProtectedRoute>
             <Route path="/signin">
               {activeModal === MODAL_TYPE.LOGIN && (
                 <LoginModal
@@ -247,12 +250,12 @@ const App = () => {
             </Route>
             <Route exact path="/">
               <Main 
-              weatherData={weatherData}
-              clothingCards={clothingCards}
-              handleCardClick={handleCardClick}
-              handleLikeClick={handleLikeClick}
-              loggedIn={loggedIn}
-              currentUser={currentUser}
+                weatherData={weatherData}
+                clothingCards={clothingCards}
+                handleCardClick={handleCardClick}
+                handleLikeClick={handleLikeClick}
+                loggedIn={loggedIn}
+                currentUser={currentUser}
               />
             </Route>
           </Switch>

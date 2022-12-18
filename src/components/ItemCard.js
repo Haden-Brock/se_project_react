@@ -10,7 +10,6 @@ const ItemCard = ({ clothingItem, handleLikeClick, onClick }) => {
     if(clothingItem.likes) {
         isLiked = clothingItem.likes.some(user => user === currentUser._id);
     }
-    console.log(isLiked, clothingItem.likes, currentUser._id);
     let isLogged = false;
     if(localStorage.getItem('jwt')) {
         isLogged = true;

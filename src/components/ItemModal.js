@@ -6,7 +6,6 @@ import { CurrentUserContext } from '../contexts/CurrentUserContext';
 const ItemModal = ({isOpen, card= {}, onClose, handleCardDelete}) => {
     const currentUser = React.useContext(CurrentUserContext);
     const isOwner = (card.owner === currentUser._id);
-    console.log(card);
     const deleteButtonClassName = (
         `modal__delete ${isOwner ? 'modal__delete_visible' : 'modal__delete_hidden'}`
     );

@@ -15,10 +15,17 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - ability to close popups using 'Escape' key
 - React, JSX, functional components
 - Production and Dev builds
+- custom API for backend
+- user creation and editing
+- like button functionality
+- card deletion with hidden button for unauthorized users
+- React routing with HOC components
 
 ## Plans for improving project
 
-- make form functional
-- add like functionality
 - add more weather conditions
 - deploy to live server for persistence
+
+## Link to back end code
+
+https://github.com/Haden-Brock/se_project_express
