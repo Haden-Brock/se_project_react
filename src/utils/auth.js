@@ -8,7 +8,6 @@ const handleResponse = (res) => {
 };
 
 const register = ({ name, avatar, email, password }) => {
-  const user = {email: email, password: password};
   return fetch(`${baseUrl}/signup`,
     {
       method: "POST",
@@ -18,8 +17,9 @@ const register = ({ name, avatar, email, password }) => {
       },
       body: JSON.stringify({ name, avatar, email, password }),
     }
-  )    
-    .then(() => {return user})
+  )
+    .then(handleResponse)
+    .then((res) => {return {email: res.data.email, password}})
     .catch((err) => console.log(err));
 };
 
@@ -34,7 +34,7 @@ const authorize = (user) => {
     },
     body: JSON.stringify({ email, password })
   })
-    .then(res => res.json())
+    .then(handleResponse)
     .then((data) => {
       if (data.token) {
         localStorage.setItem('jwt', data.token); 
@@ -45,7 +45,7 @@ const authorize = (user) => {
     .catch((err) => console.log(err));
 }
 
-const getContent = (token) => {
+const checkToken = (token) => {
   return fetch(`${baseUrl}/users/me`, 
   {
     method: "GET",
@@ -58,4 +58,4 @@ const getContent = (token) => {
     .then(handleResponse)
 }
 
-export { register, authorize, getContent };
+export { register, authorize, checkToken };

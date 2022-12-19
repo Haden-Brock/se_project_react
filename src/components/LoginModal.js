@@ -21,11 +21,7 @@ const LoginModal = ({ isOpen, handleLogin, onModalRedirect, onClose }) => {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    
     handleLogin({ email, password });
-    setEmail("");
-    setPassword("");
-    onClose();
   }
 
   return (
@@ -47,6 +43,7 @@ const LoginModal = ({ isOpen, handleLogin, onModalRedirect, onClose }) => {
         type="email"
         placeholder="Email"
         onChange={handleEmailChange}
+        value={email}
         required
       />
       <h4 className="form__label">Password</h4>
@@ -56,6 +53,7 @@ const LoginModal = ({ isOpen, handleLogin, onModalRedirect, onClose }) => {
         type="password"
         placeholder="Password"
         onChange={handlePasswordChange}
+        value={password}
         required
       />
     </ModalWithForm>

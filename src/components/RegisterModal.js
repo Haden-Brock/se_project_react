@@ -35,7 +35,6 @@ const RegisterModal = ({ isOpen, handleRegister, onModalRedirect, onClose }) => 
   const handleSubmit = (evt) => {
     evt.preventDefault();
     handleRegister({ email, password, userName, avatar });
-    onClose();
   }
 
   return (
@@ -59,6 +58,7 @@ const RegisterModal = ({ isOpen, handleRegister, onModalRedirect, onClose }) => 
           minLength="3"
           maxLength="40"
           onChange={handleEmailChange}
+          value={email}
           required
         />
         <h4 className="form__label">Password*</h4>
@@ -70,6 +70,7 @@ const RegisterModal = ({ isOpen, handleRegister, onModalRedirect, onClose }) => 
           minLength="1"
           maxLength="40"
           onChange={handlePasswordChange}
+          value={password}
           required
         />
         <h4 className="form__label">Name*</h4>
@@ -81,6 +82,7 @@ const RegisterModal = ({ isOpen, handleRegister, onModalRedirect, onClose }) => 
           minLength="1"
           maxLength="40"
           onChange={handleUserNameChange}
+          value={userName}
           required
         />
         <h4 className="form__label">Avatar URL*</h4>
@@ -92,6 +94,7 @@ const RegisterModal = ({ isOpen, handleRegister, onModalRedirect, onClose }) => 
           minLength="1"
           maxLength="40"
           onChange={handleAvatarChange}
+          value={avatar}
         />
       </ModalWithForm>
   )

@@ -31,12 +31,13 @@ const App = () => {
   React.useEffect(()=> {
     if (localStorage.getItem('jwt')) {
       const jwt = localStorage.getItem('jwt');
-      auth.getContent(jwt)
+      auth.checkToken(jwt)
         .then(({ data }) => {
           setLoggedIn(true);
           setCurrentUser(data);
           history.push('/profile');
         })
+        .catch((err) => console.log(err));
     } else {
       history.push('/');
     }
@@ -105,14 +106,17 @@ const App = () => {
     auth.authorize(user)
       .then((authUser) => {
         if (authUser.token) {
-          auth.getContent(authUser.token)
+          auth.checkToken(authUser.token)
             .then(({ data }) => {
               setLoggedIn(true);
               setCurrentUser(data);
+              closeModal();
               history.push('/profile');
             })
+            .catch((err) => console.log(err));
         }
       })
+      .catch((err) => console.log(err));
   }
 
   const handleLikeClick = (cardId, isLiked, user) => {
@@ -139,7 +143,7 @@ const App = () => {
     history.push('/');
   }
 
-  const handleRegister = ({ email, password, userName, avatar} ) => {
+  const handleRegister = ({ email, password, userName, avatar }) => {
     const newUser = {};
     newUser.email = email;
     newUser.password = password;
@@ -152,6 +156,7 @@ const App = () => {
       .then((user) => {
         return handleLogin(user);
       })
+      .catch((err) => console.log(err));
   }
 
   const handleAddItemSubmit = ({ name, weather, imageUrl }) => {
@@ -164,6 +169,7 @@ const App = () => {
     addClothingItem(item)
       .then((item) => {
         setClothingCards([...clothingCards, item]);
+        closeModal();
       })
       .catch((err) => {
         console.log(err);
@@ -177,6 +183,7 @@ const App = () => {
     editProfile(userUpdate)
       .then((res) => {
         setCurrentUser(res);
+        closeModal();
       })
       .catch((err) => {
         console.log(err);

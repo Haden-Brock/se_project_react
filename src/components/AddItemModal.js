@@ -28,7 +28,6 @@ const AddItemModal = ({ isOpen, onAddItem, onClose}) => {
     const handleSubmit = (evt) => {
         evt.preventDefault();
         onAddItem({ name, weather, imageUrl });
-        onClose();
     }
 
     return (
@@ -49,6 +48,7 @@ const AddItemModal = ({ isOpen, onAddItem, onClose}) => {
               minLength="1"
               maxLength="40"
               onChange={handleNameChange}
+              value={name}
               required
             />
             <h4 className="form__label">Image</h4>
@@ -58,6 +58,7 @@ const AddItemModal = ({ isOpen, onAddItem, onClose}) => {
               type="url"
               placeholder="Image URL"
               onChange={handleImageUrlChange}
+              value={imageUrl}
               required
             />
             <h4 className="form__label">Select the weather type:</h4>

@@ -17,7 +17,6 @@ const EditProfileModal = ({ isOpen, currentUser, handleEditProfileSubmit, onClos
   const handleSubmit = (evt) => {
     evt.preventDefault();
     handleEditProfileSubmit({ name, avatar });
-    onClose();
   }
 
   return (
@@ -38,6 +37,7 @@ const EditProfileModal = ({ isOpen, currentUser, handleEditProfileSubmit, onClos
         minLength="1"
         maxLength="40"
         onChange={handleNameChange}
+        value={name}
         required
       />
       <h4 className="form__label">Avatar</h4>
@@ -49,6 +49,7 @@ const EditProfileModal = ({ isOpen, currentUser, handleEditProfileSubmit, onClos
         minLength="1"
         maxLength="40"
         onChange={handleAvatarChange}
+        value={avatar}
       />
     </ModalWithForm>
   )
