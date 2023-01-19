@@ -19,13 +19,17 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - user creation and editing
 - like button functionality
 - card deletion with hidden button for unauthorized users
-- React routing with HOC components
+- React routing with HOC components\
+- Deployed to Google Cloud server
 
 ## Plans for improving project
 
 - add more weather conditions
-- deploy to live server for persistence
 
 ## Link to back end code
 
 https://github.com/Haden-Brock/se_project_express
+
+## Link to website
+
+https://hadenzbrock.students.nomoredomainssbs.ru
