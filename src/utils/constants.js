@@ -34,7 +34,9 @@ const weatherConditions = {
 
 const weatherIconSelector = ['weather__icon-one', 'weather__icon-two'];
 
-const baseUrl = 'http://localhost:3001';
+const baseUrl = process.env.NODE_ENV === 'production'
+    ? 'https://api.hadenzbrock.students.nomoredomainssbs.ru'
+    : 'http://localhost:3001';
 
 const MODAL_TYPE = {
   ADD: "add", 
