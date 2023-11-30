@@ -20,7 +20,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - like button functionality
 - card deletion with hidden button for unauthorized users
 - React routing with HOC components\
-- Deployed to Google Cloud server
+- Deployed to Google Cloud server *server no longer functioning*
 
 ## Plans for improving project
 
