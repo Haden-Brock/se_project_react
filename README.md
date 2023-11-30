@@ -29,7 +29,3 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Link to back end code
 
 https://github.com/Haden-Brock/se_project_express
-
-## Link to website
-
-https://hadenzbrock.students.nomoredomainssbs.ru
